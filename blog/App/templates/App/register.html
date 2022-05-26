@@ -1,0 +1,22 @@
+{% extends "App/padre.html" %}
+
+{%load static %}
+
+{% block contenidoQueCambia %}
+
+    <form method="post">
+        {% csrf_token %}
+    
+        {{ form.as_p }}
+
+
+        <button type="submit" value="registrar usuario"> Registrar usuario </button>
+    </form>
+
+{% endblock %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Creación nuevo Usuario </H1>                        
+
+{% endblock %}

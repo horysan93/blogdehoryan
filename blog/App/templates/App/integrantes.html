@@ -1,0 +1,21 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Integrantes </H1>                        
+<h2 class="text-white-50 mx-auto mt-2 mb-5"> Equipo que trabaja en este proyecto  </h2>
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+<body style="background-color:black"></body>
+    <form>
+        <a href="{% url 'integrantesformulario' %}">
+            <input type="button" value="inscripción nuevos integrantes">
+        </a>
+    </form>
+</body>
+{% endblock %}

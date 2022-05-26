@@ -1,0 +1,57 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">El Blog de Horyan</H1>                        
+<h2 class="text-white-50 mx-auto mt-2 mb-5"> Un espacio donde se suben reviews y noticias del mundo de los videojuegos </h2>
+
+
+{% if request.user.is_authenticated %}
+<h3 style="color:white"> Bienvenido {{user}}    </h3>
+{% endif %}
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+{% if not respuesta %}
+<body style="background-color:black">
+<h1 style="color:rgb(255, 255, 255)"> Ultimas publicaciones: </h1>
+
+    <ul style="color:whitesmoke;">
+        {% for juego in juegos_recientes %}
+            <li>{{juego}}</li>
+
+        {% endfor %}
+    </ul>
+
+
+</body>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
+{% block contacto %}
+<!-- CONTACTO-->
+<section class="contact-section bg-black">
+    
+            <div class="row-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Contacto</h4>
+
+                        <div class="small text-black-50"><a href="#!">hory.san93@gmail.com</a></div>
+                    </div>
+                </div>
+            </div>
+    
+</section>
+{% endblock %}
+

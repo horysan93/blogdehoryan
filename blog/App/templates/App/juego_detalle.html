@@ -1,0 +1,26 @@
+{% extends "App/padre.html" %}
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">Reviews de Juegos </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+<body style="background-color:black"></body>
+{% csrf_token %}
+<H1 style="color:white"><i>{{juego.titulo}}:</i></H1>
+<h5 style="color:white"><i>{{juego.subtitulo}}</i></h5>
+<p style="color:white"><i>{{juego.categoria}}</i></p>
+<p style="color:white"><i> Publicado en {{juego.fecha}} por {{juego.autor}}</i></p>
+<p style="color:white"><i>{{juego.texto}}</i></p>
+<!-- PENDIENTE AGREGAR IMAGEN <p><i>{{juego.imagen}}</i></p> --> 
+<img src="{{juego.imagen.url}}"/>
+<p>
+   <a href="{% url 'juego_listar' %}">REGRESAR</a>
+</p>
+</body>
+
+{% endblock %}

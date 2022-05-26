@@ -1,0 +1,20 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<form method="post">
+    {% csrf_token %}
+    
+    {{ formulario.as_p }}
+    <input type="submit" value="INICIAR SESION">
+</form>
+{% endblock %}
+
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Login de Usuarios </H1>                        
+
+{% endblock %}

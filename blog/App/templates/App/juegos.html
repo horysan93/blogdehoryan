@@ -1,0 +1,39 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Juegos </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    
+<body style="background-color:black"></body>
+<form method="post" enctype="multipart/form-data">
+    <H1> Listado reviews del sitio: </H1>
+        {% for juego in object_list %}
+    
+            <li>{{juego}}</li>
+            <!--agregamos bvotones-->
+            <button>
+                <a href="{% url 'juego_detalle' juego.id %}">Detalle</a>
+            </button>
+            <button>
+                <a href="{% url 'juego_editar' juego.id %}">Editar</a>
+            </button>
+            <button>
+                <a href="{% url 'juego_borrar' juego.id %}">BORRAR</a>
+            </button>
+        {% endfor %}
+    
+        <!-- creamos boton de agregar elementos-->
+        <p>
+            <a href="{% url 'juego_crear' %}">Agregar Review</a>
+        </p>
+</form>
+
+</body>
+{% endblock %}

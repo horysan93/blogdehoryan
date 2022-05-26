@@ -1,0 +1,26 @@
+{% extends "App/padre.html" %}
+
+{%load static %}
+
+
+
+{% block contenidoQueCambia %}
+<h1> agregando avatar de {{usuario}} </h1>
+
+<form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    <table>
+        {{formulario.as_table}}
+    </table>
+
+    <input type="submit" value="agregar avatar">
+
+</form>        <!-- Creamos el listado de profesores y el boton para eliminar-->
+                    <!-- linkeando con la URL eliminarProfesor -->
+{% endblock %}
+
+{% block titulo %}
+
+<H1> Edición de perfil de usuario  </H1>
+
+{% endblock %}

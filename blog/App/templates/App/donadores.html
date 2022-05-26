@@ -1,0 +1,21 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">Donadores!! </H1>                        
+<h2 class="text-white-50 mx-auto mt-2 mb-5"> Personas maravillosas que hacen este proyecto posible </h2>
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+<body style="background-color:black"></body>
+    <form>
+        <a href="{% url 'donadoresformulario' %}">
+            <input type="button" value="inscribete como donador!">
+        </a>
+    </form>
+</body>
+{% endblock %}
