@@ -40,8 +40,10 @@
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil'%}">Editar Perfil</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'agregarAvatar'%}">Cambio de avatar</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inbox'%}">Inbox</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Cerrar sesión</a></li>
+
+
                         <h7 style="color:whitesmoke"> Sesión de {{user}} </h7>
                         <img  src="{{url}}" alt=""/>  
                         {% endif %}

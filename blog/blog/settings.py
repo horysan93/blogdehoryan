@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'App',
     'ckeditor',
-    'chatrooms',
+    'chat',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'blog.wsgi.application'
-ASGI_APPLICATION = 'blog.asgi.application'
+
 
 
 # Database
