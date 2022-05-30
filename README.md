@@ -2,7 +2,9 @@
 Proyecto Final Horacio San Martín - CoderHouse
 
 ### 0. EXPLICACION DE LA PAGINA WEB
-pagina web de reviews de videojuegos y noticias de juegos, 
+LINK VIDEO YOUTUBE: https://youtu.be/HWXVEFgOXSQ
+
+pagina web de reviews de videojuegos y noticias de juegos, para correrla entrar a cd blog
 admin: hory
 contraseña: qwerty123
 
