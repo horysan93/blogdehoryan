@@ -1,0 +1,39 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Noticias </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    
+<body style="background-color:black"></body>
+<form method="post" enctype="multipart/form-data">
+    <H1> Listado Noticias: </H1>
+        {% for noticia in object_list %}
+    
+            <li>{{ noticia }}</li>
+            <!--agregamos bvotones-->
+            <button>
+                <a href="{% url 'noticia_detalle' noticia.id %}">Detalle</a>
+            </button>
+            <button>
+                <a href="{% url 'noticia_editar' noticia.id %}">Editar</a>
+            </button>
+            <button>
+                <a href="{% url 'noticia_borrar' noticia.id %}">BORRAR</a>
+            </button>
+        {% endfor %}
+    
+        <!-- creamos boton de agregar elementos-->
+        <p>
+            <a href="{% url 'noticia_crear' %}">Agregar Noticia</a>
+        </p>
+</form>
+
+</body>
+{% endblock %}

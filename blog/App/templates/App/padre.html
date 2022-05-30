@@ -23,15 +23,13 @@
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="{% url 'inicio' %}">El blog de Horyan</a>            
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'juego_listar' %}">Juegos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'noticias' %}">Noticias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'integrantes'%}">Integrantes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'sugerencias'%}">Sugerencias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'noticia_listar' %}">Noticias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sugerencia_listar'%}">Sugerencias</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'acercademi'%}">Acerca de mi</a></li>
                         
                         {% if not request.user.is_authenticated %}
@@ -39,16 +37,13 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'register'%}">Nuevo Usuario</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil'%}">Editar Perfil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'agregarAvatar'%}">Cambio de avatar</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'inbox'%}">Inbox</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}">Cerrar sesión</a></li>
 
 
                         <h7 style="color:whitesmoke"> Sesión de {{user}} </h7>
-                        <img  src="{{url}}" alt=""/>  
+                        <img  src="{{ url }}" alt=""/>  
                         {% endif %}
-
-                    <!--POSTERIORMENTE AGREGAR BOTON DE LOGIN-->
                     
                     </ul>
                 </div>
@@ -79,11 +74,8 @@
 
         {% block contacto %}
         {% endblock %}
-        <!-- Bloque donde pondremos las cosas únicas de cada página-->
-
 
         <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Horyan 2022</div></footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

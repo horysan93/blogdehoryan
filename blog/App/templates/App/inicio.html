@@ -18,20 +18,25 @@
 {% block contenidoQueCambia %}
 {% if not respuesta %}
 <body style="background-color:black">
-<h1 style="color:rgb(255, 255, 255)"> Ultimas publicaciones: </h1>
-
-    <ul style="color:whitesmoke;">
-        {% for juego in juegos_recientes %}
-            <li>{{juego}}</li>
-
-        {% endfor %}
-    </ul>
-
-
+    <h1 style="color:rgb(255, 255, 255)"> Ultimas publicaciones: </h1>
+    <h2 style="color:rgb(255, 255, 255)"> Noticias recientes </h2>
+        <ul style="color:whitesmoke;">
+            {% for noticia in noticias_recientes %}
+                <button style="background-color: black">
+                    <a href="{% url 'noticia_detalle' noticia.id %}"> {{noticia}} </a>
+                </button>
+            {% endfor %}
+        </ul>
+    <h2 style="color:rgb(255, 255, 255)"> Reviews recientes </h2>
+        <ul style="color:whitesmoke;">
+            {% for juego in juegos_recientes %}
+                <button style="background-color: black">
+                    <a href="{% url 'juego_detalle' juego.id %}"> {{juego}} </a>
+                </button>
+            {% endfor %}
+        </ul>
 </body>
 {% endif %}
-
-
 
 {% endblock %}
 

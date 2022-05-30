@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 
 
 #vamos acambiar inicio
-#@login_required
+
 def inicio(request):
     juegos_recientes = Juego.objects.order_by('-fecha')[:1]
     noticias_recientes = Noticia.objects.order_by('-fecha')[:1]
@@ -35,7 +35,6 @@ def inicio(request):
     return render(request,"App/inicio.html",{'juegos_recientes':juegos_recientes, 'noticias_recientes':noticias_recientes})
 
 
-
 def acercademi(request):
     return render(request,"App/acercademi.html")
 
@@ -45,9 +44,6 @@ def juegos(request):
 
 def noticias(request):
     return render(request,"App/noticias.html")
-
-def integrantes(request):
-    return render(request, "App/integrantes.html")
 
 def sugerencias(request):
     return render(request, "App/sugerencias.html")
@@ -65,6 +61,8 @@ class AdminRequiredMixin(UserPassesTestMixin):
 #---------------------------------------------
 # CRUD VARIABLES
 #---------------------------------------------
+
+#Juegos________________________________________________________
 class JuegosList(ListView): 
     #El LoginRequiredMixin debe ir primero para que lo tome
     model = Juego
@@ -81,11 +79,10 @@ class JuegoCreacion(LoginRequiredMixin, CreateView):   #Crear
     fields=['titulo','subtitulo','categoria','texto','imagen','fecha','autor']       
 
 
-class JuegoEdicion(LoginRequiredMixin, UpdateView):    #editar
+class JuegoEdicion(AdminRequiredMixin, UpdateView):    #editar
     model = Juego
     success_url = reverse_lazy("juego_listar") 
     fields=['titulo','subtitulo','categoria','texto','imagen','fecha','autor']     
-
 
 
 class JuegoEliminacion(AdminRequiredMixin, DeleteView):  #eliminar
@@ -93,6 +90,62 @@ class JuegoEliminacion(AdminRequiredMixin, DeleteView):  #eliminar
     success_url = reverse_lazy("juego_listar")  #Fijamos la url que buscará cuando sale bien
     #Campos que tiene que mostrar
     fields=['titulo','subtitulo','categoria','texto','imagen','fecha','autor']     
+
+#Noticias___________________________________________________
+class NoticiasList(ListView): 
+    #El LoginRequiredMixin debe ir primero para que lo tome
+    model = Noticia
+    template_name= 'App/noticia_list.html'
+
+class NoticiaDetalle(DetailView):    #mostrar 
+    model = Noticia
+    template_name = 'App/noticia_detalle.html'
+
+class NoticiaCreacion(LoginRequiredMixin, CreateView):   #Crear 
+    model = Noticia
+    success_url = reverse_lazy("noticia_listar")  #Fijamos la url que buscará cuando sale bien
+    fields=['titulo','texto','imagen','fecha','autor']       
+
+
+class NoticiaEdicion(AdminRequiredMixin, UpdateView):    #editar
+    model = Noticia
+    success_url = reverse_lazy("noticia_listar") 
+    fields=['titulo','texto','imagen','fecha','autor']     
+
+
+class NoticiaEliminacion(AdminRequiredMixin, DeleteView):  #eliminar
+    model = Noticia
+    success_url = reverse_lazy("noticia_listar")  #Fijamos la url que buscará cuando sale bien
+    #Campos que tiene que mostrar
+    fields=['titulo','texto','imagen','fecha','autor']  
+
+# Sugerencias ________________________________________________________
+class SugerenciasList(ListView): 
+    #El LoginRequiredMixin debe ir primero para que lo tome
+    model = Sugerencia
+    template_name= 'App/sugerencia_list.html'
+
+class SugerenciaDetalle(DetailView):    #mostrar 
+    model = Sugerencia
+    template_name = 'App/sugerencia_detalle.html'
+
+class SugerenciaCreacion(LoginRequiredMixin, CreateView):   #Crear 
+    model = Sugerencia
+    success_url = reverse_lazy("sugerencia_listar")  #Fijamos la url que buscará cuando sale bien
+    fields=['nombre','categoria','usuario']       
+
+
+class SugerenciaEdicion(AdminRequiredMixin, UpdateView):    #editar
+    model = Sugerencia
+    success_url = reverse_lazy("sugerencia_listar") 
+    fields=['nombre','categoria','usuario']    
+
+
+class SugerenciaEliminacion(AdminRequiredMixin, DeleteView):  #eliminar
+    model = Sugerencia
+    success_url = reverse_lazy("sugerencia_listar")  #Fijamos la url que buscará cuando sale bien
+    #Campos que tiene que mostrar
+    fields=['nombre','categoria','usuario'] 
 
 
 

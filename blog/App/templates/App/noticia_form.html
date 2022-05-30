@@ -1,0 +1,24 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Añadir Noticia </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    <body style="background-color:black" ></body>
+        <h1 style="color:white">Ingresa la noticia:</h1>
+        <p style="color:white">Nota: fecha en formato YYYY-MM-DD</p>
+
+        <form style="color:white" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="ENVIAR" />
+        </form>
+        
+    </body>
+{% endblock %}

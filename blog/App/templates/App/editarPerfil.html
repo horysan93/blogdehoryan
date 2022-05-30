@@ -6,7 +6,6 @@
 
 {% block contenidoQueCambia %}
 <h1> Editando perfil {{usuario}} </h1>
-
 <form action="{% url 'editarPerfil' %}" method="POST"> {% csrf_token %}
 
     <table>
@@ -16,6 +15,11 @@
     <input type="submit" value="Editar usuario">
 
 </form>        
+
+<button>
+    <a href="{% url 'agregarAvatar' %}"> Agregar/Cambiar avatar</a>
+</button>
+
 {% endblock %}
 
 {% block tituloQueCambia %}

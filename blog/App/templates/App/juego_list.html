@@ -14,6 +14,7 @@
 <body style="background-color:black"></body>
 <form method="post" enctype="multipart/form-data">
     <H1 style="color:white"> Listado reviews del sitio: </H1>
+    {% if object_list %}    
         {% for juego in object_list reversed %}
     
             <li style="color:white">{{juego}}</li>
@@ -28,7 +29,11 @@
                 <a href="{% url 'juego_borrar' juego.id %}">Borrar</a>
             </button>
         {% endfor %}
-    
+    {% else %}
+        <H1 style="color:white"> No hay reviews aún: </H1>
+           
+    {% endif %}
+
         <!-- creamos boton de agregar elementos-->
         <br> <br>
         <br> <br>

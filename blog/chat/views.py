@@ -24,19 +24,29 @@ from django.contrib.auth.decorators import login_required
 class ListThreads(View):
     def get(self, request, *args, **kwargs):
         threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user))
-        context = {'threads': threads}
+
+        context = {
+            'threads': threads
+        }
+
         return render(request, 'chat/inbox.html', context)
 
 
 class CreateThread(View):
     def get(self, request, *args, **kwargs):
         form = ThreadForm()
-        context = {'form': form}
+
+        context = {
+            'form': form
+        }
+
         return render(request, 'chat/create_thread.html', context)
-    
+
     def post(self, request, *args, **kwargs):
         form = ThreadForm(request.POST)
-        username = request.POST.get('username')       
+
+        username = request.POST.get('username')
+
         try:
             receiver = User.objects.get(username=username)
             if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
@@ -48,32 +58,44 @@ class CreateThread(View):
 
             if form.is_valid():
                 thread = ThreadModel(
-                user=request.user,
-                receiver=receiver
+                    user=request.user,
+                    receiver=receiver
                 )
                 thread.save()
-                thread_pk = thread.pk
-                return redirect('thread', pk=thread_pk)
+
+                return redirect('thread', pk=thread.pk)
         except:
             return redirect('create-thread')
 
 
 class ThreadView(View):
-    def get(self, request,pk, *args, **kwargs):
+    def get(self, request, pk, *args, **kwargs):
         form = MessageForm()
         thread = ThreadModel.objects.get(pk=pk)
         message_list = MessageModel.objects.filter(thread__pk__contains=pk)
-        context = {'thread':thread, 'form':form, 'message_list':message_list}
-        return render(request, 'chat/thread.html',context)
+        context = {
+            'thread': thread,
+            'form': form,
+            'message_list': message_list
+        }
+
+        return render(request, 'chat/thread.html', context)
+
 
 class CreateMessage(View):
-    def post(self, request, pk, *arg, **kargs):
+    def post(self, request, pk, *args, **kwargs):
         thread = ThreadModel.objects.get(pk=pk)
         if thread.receiver == request.user:
             receiver = thread.user
         else:
             receiver = thread.receiver
-            message = MessageModel(thread=thread, sender_user=request.user, receiver_user=receiver,body=request.POST.get('message'))
 
-            message.save()
-            return redirect('thread', pk=pk)
+        message = MessageModel(
+            thread=thread,
+            sender_user=request.user,
+            receiver_user=receiver,
+            body=request.POST.get('message')
+        )
+
+        message.save()
+        return redirect('thread', pk=pk)

@@ -1,0 +1,45 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Noticias </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    
+<body style="background-color:black"></body>
+<form method="post" enctype="multipart/form-data">
+    <H1 style="color:white"> Listado noticias del sitio: </H1>
+    {% if object_list %}
+        {% for noticia in object_list reversed %}
+    
+            <li style="color:white">{{noticia}}</li>
+            <!--agregamos bvotones-->
+            <button>
+                <a href="{% url 'noticia_detalle' noticia.id %}">Detalle</a>
+            </button>
+            <button>
+                <a href="{% url 'noticia_editar' noticia.id %}">Editar</a>
+            </button>
+            <button>
+                <a href="{% url 'noticia_borrar' noticia.id %}">Borrar</a>
+            </button>
+        {% endfor %}
+    {% else %}
+    <H1 style="color:white"> No hay noticias aún </H1>
+    {% endif %}
+        <!-- creamos boton de agregar elementos-->
+        <br> <br>
+        <br> <br>
+        <h5 style="color:white"> Para agregar una nueva entrada de Noticia da click en el siguiente botón </h5>
+        <p>
+            <a href="{% url 'noticia_crear' %}">Agregar Noticia</a>
+        </p>
+</form>
+
+</body>
+{% endblock %}

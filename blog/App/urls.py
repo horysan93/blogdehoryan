@@ -23,15 +23,25 @@ urlpatterns = [
     path('acercademi', views.acercademi, name= 'acercademi'),
     path('juegos',views.juegos, name= 'juegos'),
     path('noticias',views.noticias, name= 'noticias'),
-    path('integrantes',views.integrantes, name= 'integrantes'),
     path('sugerencias',views.sugerencias, name= 'sugerencias'),
     #CRUD JUEGOS
     path('juego/list', JuegosList.as_view(), name = 'juego_listar'),
     path('juego/<pk>', JuegoDetalle.as_view(), name = 'juego_detalle'),
     path('juego/nuevo/', JuegoCreacion.as_view(), name = 'juego_crear'),
-    #nuevo/ sin el / me tira error, supongo xq agrega cosas
     path('juego/editar/<pk>', JuegoEdicion.as_view(), name = 'juego_editar'),
     path('juego/borrar/<pk>', JuegoEliminacion.as_view(), name = 'juego_borrar'),
+    #CRUD NOTICIAS
+    path('noticia/list', NoticiasList.as_view(), name = 'noticia_listar'),
+    path('noticia/<pk>', NoticiaDetalle.as_view(), name = 'noticia_detalle'),
+    path('noticia/nuevo/', NoticiaCreacion.as_view(), name = 'noticia_crear'),
+    path('noticia/editar/<pk>', NoticiaEdicion.as_view(), name = 'noticia_editar'),
+    path('noticia/borrar/<pk>', NoticiaEliminacion.as_view(), name = 'noticia_borrar'),
+    #CRUD SUGERENCIAS
+    path('sugerencia/list', SugerenciasList.as_view(), name = 'sugerencia_listar'),
+    path('sugerencia/<pk>', SugerenciaDetalle.as_view(), name = 'sugerencia_detalle'),
+    path('sugerencia/nuevo/', SugerenciaCreacion.as_view(), name = 'sugerencia_crear'),
+    path('sugerencia/editar/<pk>', SugerenciaEdicion.as_view(), name = 'sugerencia_editar'),
+    path('sugerencia/borrar/<pk>', SugerenciaEliminacion.as_view(), name = 'sugerencia_borrar'),
     #PATH de login, register y logout
     path('login', login_request , name = 'login'),
     path('register', register , name = 'register'),

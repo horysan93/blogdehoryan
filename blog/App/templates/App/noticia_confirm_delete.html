@@ -1,0 +1,19 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">Eliminar noticias </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    <body style="background-color:black"></body>
+    <form method="post" style="color:white">{% csrf_token %}
+        ¿estas seguro que deseas borrar la noticia "{{ object }}"?
+        <input type="submit" value="SI"/>
+    </form>
+</body>
+{% endblock %}

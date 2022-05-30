@@ -5,22 +5,20 @@
 
 
 {% block contenidoQueCambia %}
-<h1> agregando avatar de {{usuario}} </h1>
-
-<form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-
-    <table>
-        {{formulario.as_table}}
-    </table>
-
-    <input type="submit" value="agregar avatar">
-
-</form>        <!-- Creamos el listado de profesores y el boton para eliminar-->
+       <!-- Creamos el listado de profesores y el boton para eliminar-->
                     <!-- linkeando con la URL eliminarProfesor -->
 {% endblock %}
 
 {% block titulo %}
+<h3 style="color:whitesmoke"> Agregando avatar de {{usuario}} </h3>
 
-<H1> Edición de perfil de usuario  </H1>
+<form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
+    <table style="color:white">
+        {{formulario.as_table}}
+    </table>
+
+    <input type="submit" value="Agregar avatar">
+
+</form> 
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "App/padre.html" %}
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">Noticias videojuegos </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+<body style="background-color:black"></body>
+{% csrf_token %}
+<H1 style="color:white"><i>{{noticia.titulo}}:</i></H1>
+<p style="color:white"><i> Publicado en {{noticia.fecha}} por {{noticia.autor}}</i></p>
+<p style="color:white"><i>{{noticia.texto}}</i></p>
+<!-- PENDIENTE AGREGAR IMAGEN <p><i>{{juego.imagen}}</i></p> --> 
+<img src="{{noticia.imagen.url}}"/>
+<p>
+   <a href="{% url 'noticia_listar' %}">REGRESAR</a>
+</p>
+</body>
+
+{% endblock %}

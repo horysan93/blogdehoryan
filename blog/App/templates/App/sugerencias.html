@@ -1,0 +1,39 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase"> Sugerencias de reviews </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+    
+<body style="background-color:black"></body>
+<form method="post" enctype="multipart/form-data">
+    <H1> Listado Sugerencias: </H1>
+        {% for sugerencia in object_list %}
+    
+            <li>{{ sugerencia.nombre }}</li>
+            <!--agregamos bvotones-->
+            <button>
+                <a href="{% url 'sugerencia_detalle' sugerencia.id %}">Detalle</a>
+            </button>
+            <button>
+                <a href="{% url 'sugerencia_editar' sugerencia.id %}">Editar</a>
+            </button>
+            <button>
+                <a href="{% url 'sugerencia_borrar' sugerencia.id %}">BORRAR</a>
+            </button>
+        {% endfor %}
+    
+        <!-- creamos boton de agregar elementos-->
+        <p>
+            <a href="{% url 'sugerencia_crear' %}">Agregar Sugerencia</a>
+        </p>
+</form>
+
+</body>
+{% endblock %}

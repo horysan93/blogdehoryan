@@ -1,10 +1,13 @@
 from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import User 
+from django.utils import timezone
 
 #Importamos texto cool
 from ckeditor.fields import RichTextField
 from django_resized import ResizedImageField
+
+
 
 # Create your models here.
 class Juego(models.Model):
@@ -27,32 +30,24 @@ class Noticia(models.Model):
     #Creamos atributos de las reviews
     titulo = models.CharField(max_length=50)
     #falta ponerlo luego como texto bacán
-    texto = models.CharField(max_length=1000)
+    texto = RichTextField()
     #imagen de la review
     imagen = models.ImageField()
     #fecha y autor
-    fecha = models.DateField()
-    autor = models.CharField(max_length=50, blank=True, null=True)
+    fecha =  models.DateTimeField(default=timezone.now)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, blank= True, null=True)
 
     def __str__(self):
-        return self.titulo+" "+str(self.autor)
+        return self.titulo+" ("+str(self.fecha)+")"
 
-
-class Integrante(models.Model):
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    cargo = models.CharField(max_length=50)
-    email = models.EmailField()
-
-    def __str__(self):
-         return self.nombre+" "+self.cargo
 
 class Sugerencia(models.Model):
     nombre = models.CharField(max_length=50)
     categoria = models.CharField(max_length=50)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, blank= True, null=True)
 
     def __str__(self):
-        return self.nombre
+        return self.nombre +" ("+ self.usuario+")"
 
 
 class Avatar(models.Model):

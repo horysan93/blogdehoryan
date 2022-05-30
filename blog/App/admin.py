@@ -5,8 +5,6 @@ admin.site.register(Juego)
 
 admin.site.register(Noticia)
 
-admin.site.register(Integrante)
-
 admin.site.register(Sugerencia)
 
 admin.site.register(Avatar)

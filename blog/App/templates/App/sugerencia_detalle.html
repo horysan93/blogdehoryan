@@ -1,0 +1,21 @@
+{% extends "App/padre.html" %}
+{% load static %}
+
+<!-- -->
+{% block titulo %}
+<H1 class="mx-auto my-0 text-uppercase">Sugerencias de reviews </H1>                        
+
+{% endblock %}
+
+<!-- -->
+{% block contenidoQueCambia %}
+<body style="background-color:black"></body>
+{% csrf_token %}
+<H1 style="color:white"><i>{{sugerencia.nombre}}:</i></H1>
+<p style="color:white"><i> Pedido {{sugerencia.usuario}}</i></p>
+<p>
+   <a href="{% url 'sugerencia_listar' %}">REGRESAR</a>
+</p>
+</body>
+
+{% endblock %}
